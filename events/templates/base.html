@@ -1,0 +1,24 @@
+<!-- templates/base.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Management</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Event Management System</h1>
+    <nav>
+        <a href="{% url 'event_list' %}">Home</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'event_create' %}">Create Event</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+        {% endif %}
+    </nav>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ event.title }}</h2>
+<p>{{ event.description }}</p>
+<p>Date: {{ event.date }}</p>
+{% if user.is_authenticated %}
+    <form action="{% url 'join_event' event.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Join Event</button>
+    </form>
+{% endif %}
+{% endblock %}
